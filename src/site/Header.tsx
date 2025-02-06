@@ -1,9 +1,9 @@
 type HeaderType = {
-    title: string,
+    titleForHeader: string,
 }
 
-export const Header = ({title}: HeaderType) => {
+export const Header = ({titleForHeader}: HeaderType) => {
     return (
-        <> {title} </>
+        <> {titleForHeader} </>
     )
 }

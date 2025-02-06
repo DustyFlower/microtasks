@@ -6,7 +6,7 @@ import {Footer} from './site/Footer.tsx';
 function App() {
     return (
         <>
-            <Header title={'NEW TITLE'}/>
+            <Header titleForHeader={'NEW TITLE'}/>
             <Body titleForBody={'NEW BODY'}/>
             <Footer titleForFooter={'NEW FOOTER'}/>
         </>
