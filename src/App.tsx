@@ -1,14 +1,27 @@
 import './App.css'
-import {Header} from './site/Header.tsx';
-import {Body} from './site/Body.tsx';
-import {Footer} from './site/Footer.tsx';
+import {useState} from 'react';
 
 function App() {
+
+    //   let a = 1
+    const [a, setA] = useState(1)
+
+    const onClickHandler = () => {
+        setA(a + 1)
+        console.log(a)
+    }
+
+    const onClickZeroHandler = () => {
+        setA(0)
+    }
+
     return (
         <>
-            <Header title={'NEW TITLE'}/>
-            <Body titleForBody={'NEW BODY'}/>
-            <Footer titleForFooter={'NEW FOOTER'}/>
+            <div className={'App'}>
+                <h1>{a}</h1>
+                <button onClick={onClickHandler}>number</button>
+                <button onClick={onClickZeroHandler}>0</button>
+            </div>
         </>
     )
 }
