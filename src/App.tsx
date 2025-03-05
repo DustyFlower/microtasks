@@ -22,11 +22,14 @@ function App() {
         setTitle('');
     }
 
+    const callBackButtonHandler = () => {
+        addMessage(title)
+    }
+
     return (
         <div className={'App'}>
-            {/* <FullInput addMessage={addMessage}/>*/}
-            <Input value={title} setTitle={setTitle}/>
-            <Button name={'ADD'} callBack={() => addMessage(title)}/>
+            <Input setTitle={setTitle} value={title}/>
+            <Button name={'+'} callBack={callBackButtonHandler}/>
             {message.map((el, index) => {
                 return (
                     <div key={index}>{el.message}</div>
