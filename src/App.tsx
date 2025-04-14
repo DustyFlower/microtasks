@@ -3,13 +3,9 @@ import {useState} from 'react';
 import {Input} from './components/Input.tsx';
 import {Button} from './components/Button.tsx';
 
-type messageType = {
-    message: string;
-}
-
 function App() {
 
-    const [message, setMessage] = useState<messageType[]>([
+    const [message, setMessage] = useState([
         {message: 'message1'},
         {message: 'message1'},
         {message: 'message1'}
@@ -19,17 +15,18 @@ function App() {
 
     const addMessage = (title: string) => {
         setMessage([{message: title}, ...message]);
-        setTitle('');
     }
 
     const callBackButtonHandler = () => {
-        addMessage(title)
+        addMessage(title);
+        setTitle('')
     }
 
     return (
         <div className={'App'}>
-            <Input setTitle={setTitle} value={title}/>
-            <Button name={'+'} callBack={callBackButtonHandler}/>
+            <Input title={title} setTitle={setTitle}/>
+            <Button name={'+'} onClick={callBackButtonHandler}/>
+            {/* <FullInput addMessage={addMessage}/>*/}
             {message.map((el, index) => {
                 return (
                     <div key={index}>{el.message}</div>
@@ -38,5 +35,6 @@ function App() {
         </div>
     )
 }
+
 
 export default App
