@@ -1,12 +1,11 @@
 import {ChangeEvent, useState} from 'react';
 
 type FullInputPropsType = {
-    addMessage: (title: string) => void;
-}
-
+    addMessage: (message: string) => void;
+};
 export const FullInput = ({addMessage}: FullInputPropsType) => {
 
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState<string>('');
 
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value);
@@ -14,14 +13,13 @@ export const FullInput = ({addMessage}: FullInputPropsType) => {
 
     const onClickButtonHandler = () => {
         addMessage(title);
-        setTitle('');
+        setTitle('')
     }
 
     return (
         <div>
-            <input onChange={onChangeInputHandler} value={title}/>
-            <button onClick={onClickButtonHandler}>+
-            </button>
+            <input value={title} onChange={onChangeInputHandler}/>
+            <button onClick={onClickButtonHandler}>+</button>
         </div>
     );
 };

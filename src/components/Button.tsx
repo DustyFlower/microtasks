@@ -1,12 +1,12 @@
 type ButtonPropsType = {
-    name: string;
-    callBack: () => void;
-}
+    name: string
+    onClick: () => void
+};
 
-export const Button = ({name, callBack}: ButtonPropsType) => {
+export const Button = ({name, onClick}: ButtonPropsType) => {
 
     const onClickButtonHandler = () => {
-        callBack()
+        onClick();
     }
 
     return (
