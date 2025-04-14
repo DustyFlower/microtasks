@@ -2,44 +2,44 @@ import './App.css'
 import {useState} from 'react';
 import {NewComponent} from './NewComponent.tsx';
 
-export type FilterType = 'all' | 'dollar' | 'ruble';
-
 export type MoneyType = {
-    banknote: string,
-    nominal: number,
+    banknots: 'Dollars' | 'RUBLS'
+    value: number
     number: string
 }
 
+export type FilterValueType = 'ALL' | 'Dollars' | 'RUBLS'
+
 function App() {
     const money: MoneyType[] = [
-        {banknote: 'dollar', nominal: 100, number: 'a123456789'},
-        {banknote: 'dollar', nominal: 50, number: 'b123456789'},
-        {banknote: 'ruble', nominal: 100, number: 'c123456789'},
-        {banknote: 'dollar', nominal: 100, number: 'd123456789'},
-        {banknote: 'dollar', nominal: 50, number: 'e123456789'},
-        {banknote: 'ruble', nominal: 100, number: 'f123456789'},
-        {banknote: 'dollar', nominal: 50, number: 'j123456789'},
-        {banknote: 'ruble', nominal: 50, number: 'h123456789'}
+        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknots: 'RUBLS', value: 50, number: ' v1234567890'}
     ]
 
-    const [filter, setFilter] = useState<FilterType>('all')
+    const [filter, setFilter] = useState<FilterValueType>('ALL');
 
-    let currentMoney = money;
-    if (filter === 'ruble') {
-        currentMoney = money.filter(filteredMoney => filteredMoney.banknote === 'ruble');
-    }
-    if (filter === 'dollar') {
-        currentMoney = money.filter(filteredMoney => filteredMoney.banknote === 'dollar');
+    const currentMoney = () => {
+
+        if (filter === 'ALL') {
+            return money
+        }
+        return money.filter(filteredMoney => filteredMoney.banknots === filter);
     }
 
-    const onClickFilterHandler = (nameButton: FilterType) => {
+    const onClickFilterHandler = (nameButton: FilterValueType) => {
         setFilter(nameButton)
     }
 
     return (
-        <div className="App">
-            <NewComponent currentMoney={currentMoney} callBack={onClickFilterHandler} />
-        </div>
+        <>
+            <NewComponent currentMoney={currentMoney} onClickFilterHandler={onClickFilterHandler}/>
+        </>
     );
 }
 
